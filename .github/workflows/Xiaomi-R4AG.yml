@@ -20,8 +20,8 @@ on:
       - 'devices/Xiaomi-R4AG/.config'
 
 env:
-  REPO_URL: https://github.com/solomonricky/openwrt
-  REPO_BRANCH: iptables-22.03
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: devices/Xiaomi-R4AG/.config
   DIY_P1_SH: devices/Xiaomi-R4AG/diy-part1.sh
@@ -76,6 +76,7 @@ jobs:
       run: |
         chmod +x $DIY_P2_SH
         cd openwrt
+        rm -rf package/lean
         $GITHUB_WORKSPACE/$DIY_P2_SH
     - name: Load custom configuration
       run: |
